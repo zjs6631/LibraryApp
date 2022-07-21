@@ -1,4 +1,5 @@
 const newBook = document.getElementById("newBook");
+const libraryBody = document.getElementById("libraryBody");
 const bookModal = document.getElementById("bookModal");
 const submitBtn = document.getElementById("submit");
 const cancelBtn = document.getElementById("cancel");
@@ -7,6 +8,7 @@ const authorInput = document.getElementById("author");
 const pagesInput = document.getElementById("pages");
 const completedInput = document.getElementById("completed");
 
+
 function Book(title, author, pages, completed) {
     this.title = title;
     this.author = author;
@@ -14,13 +16,29 @@ function Book(title, author, pages, completed) {
     this.completed = completed
 }
 
-let library = [];
+Book.prototype.displayBook = function() {
+    let books = document.querySelectorAll(".book");
+    books.forEach(book =>{
+        book.remove();
+    })
+    for(let i = 0; i < library.length; i++){
+        const createDiv = document.createElement("div");
+        createDiv.classList.add("book");
+        createDiv.innerHTML = library[i].title + library[i].author + library[i].pages + library[i].completed;
+        document.getElementById("librarybody").appendChild(createDiv);
+    }
+}
+
+let demoBook = new Book("The wild thing", "William B Queasy", "203", "No");
+
+let library = [demoBook];
 
 submitBtn.addEventListener("click", ()=>{
     let newBook = new Book(titleInput.value, authorInput.value,
     pagesInput.value, completedInput.value)
     library.push(newBook);
     bookModal.style.display = "none";
+    newBook.displayBook();
 })
 
 cancelBtn.addEventListener("click",()=>{
@@ -36,9 +54,7 @@ function getBook(){
     authorInput.value = "";
     pagesInput.value = "";
     completedInput.value = "";
+
     
-    for(let i = 0; i < library.length; i++){
-        console.log(library[i])
-    }
     
 }
