@@ -16,7 +16,7 @@ function Book(title, author, pages, completed) {
     this.completed = completed
 }
 
-Book.prototype.displayBook = function() {
+function displayBook() {
     let books = document.querySelectorAll(".book");
     books.forEach(book =>{
         book.remove();
@@ -33,12 +33,14 @@ let demoBook = new Book("The wild thing", "William B Queasy", "203", "No");
 
 let library = [demoBook];
 
+displayBook();
+
 submitBtn.addEventListener("click", ()=>{
     let newBook = new Book(titleInput.value, authorInput.value,
     pagesInput.value, completedInput.value)
     library.push(newBook);
     bookModal.style.display = "none";
-    newBook.displayBook();
+    displayBook()
 })
 
 cancelBtn.addEventListener("click",()=>{

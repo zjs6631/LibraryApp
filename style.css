@@ -5,6 +5,9 @@ body{
     margin: 0;
     width: 100%;
     height: auto;
+    background-image: url("images/background.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
 }
 
 #mainContainer{
@@ -16,7 +19,6 @@ body{
 #header{
     display: grid;
     grid-row-start: 1;
-    background-color: #6f4e37;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #fdfd96;
@@ -38,12 +40,30 @@ body{
 
 #librarybody{
     display: grid;
-    grid-template-rows: repeat(auto, 1fr);
-    grid-template-columns: repeat(auto, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-row-start: 2;
-    background-image: url("images/background.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat;
+    justify-content: center;
+    text-align: center;
+    margin: 20px;
+    
+    
+    
+}
+
+.book{
+    background-color: #573b27;
+    color: #fdfd96;
+    height: 300px;
+    width: 200px;
+    background-image: url("images/bookcover.jpg");
+    background-size: cover;
+    border-left: 10px solid rgb(1, 46, 1);
+
+}
+
+.book img{
+
 }
 
 #librarybody img{
@@ -59,8 +79,8 @@ body{
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
+    width: 45%;
+    height: 45%;
     overflow: auto;
     background-color:#573b27;
     color: #fdfd96;
@@ -68,16 +88,21 @@ body{
 }
 
 #bookForm{
+    display: grid;
+    
+    gap: 5px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     line-height: 10px;
+
+    
     
 }
 
 #footer{
     grid-row-start: 3;
-    background-color: #6f4e37;
+    
 }
