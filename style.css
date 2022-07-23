@@ -65,6 +65,8 @@ body{
     background-size: cover;
     border-left: 10px solid rgb(1, 46, 1);
     border-radius: 15px;
+    justify-self: center;
+    align-self: center;
 
 }
 
