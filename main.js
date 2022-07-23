@@ -24,8 +24,9 @@ function displayBook() {
     for(let i = 0; i < library.length; i++){
         const createDiv = document.createElement("div");
         createDiv.classList.add("book");
-        createDiv.innerHTML = library[i].title + library[i].author + library[i].pages + library[i].completed;
+        createDiv.innerHTML =  "Title: " + library[i].title + "<br> Author: " + library[i].author + "<br> Pages:" + library[i].pages + "<br> Completed" + library[i].completed;
         document.getElementById("librarybody").appendChild(createDiv);
+        
     }
 }
 
