@@ -47,27 +47,28 @@ function displayBook() {
     for(let i = 0; i < library.length; i++){
         const createDiv = document.createElement("div");
         createDiv.classList.add("book");
-        createDiv.innerHTML =  "Title: " + library[i].title + "<br> Author: " + library[i].author + "<br> Pages:" + library[i].pages +
-         "<br> Completion Status: " + library[i].readStatus();
+        createDiv.innerHTML =  "<p>Title: " + library[i].title + "</p><p>Author: " + library[i].author + "</p><p>Pages:" + library[i].pages +
+         "</p><p id='status" + i + "'> Completion Status: " + library[i].readStatus() + "</p>";
         const statusBtn = document.createElement("button")
         statusBtn.classList.add("statusBtn");
         statusBtn.innerHTML = "Toggle Status"
         statusBtn.addEventListener("click",()=>{
-            createDiv.innerHTML =  "Title: " + library[i].title + "<br> Author: " + library[i].author + "<br> Pages:" + library[i].pages +
-            "<br> Completion Status: " + library[i].changeStatus();
+            const statusText = document.getElementById("status" + i);
             if(library[i].completed == true){
                 library[i].completed = false;
-            } else {
+                statusText.innerHTML = "Completion Status: In Progress";
+                console.log("okay")
+            } else if (library[i].completed == false){
                 library[i].completed = true;
+                statusText.innerHTML = "Completion Status: Completed";
+                console.log("trying")
+            } else {
+                console.log("missing the point")
+                library[i].completed = false;
             }
-            const statusBtn = document.createElement("button")
-            statusBtn.classList.add("statusBtn");
-            statusBtn.innerHTML = "Toggle Status"
-            createDiv.appendChild(statusBtn);
         })
         document.getElementById("librarybody").appendChild(createDiv);
         createDiv.appendChild(statusBtn);
-
         
     }
 }
@@ -107,7 +108,7 @@ function getBook(){
     titleInput.value = "";
     authorInput.value = "";
     pagesInput.value = "";
-    completedInput.value = "";
+    completedInput.value;
 
     
     
