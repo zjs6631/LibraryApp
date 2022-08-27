@@ -5,9 +5,7 @@ const libraryBody = document.getElementById("libraryBody");
 const bookModal = document.getElementById("bookModal");
 const submitBtn = document.getElementById("submit");
 const cancelBtn = document.getElementById("cancel");
-const titleInput = document.getElementById("title");
-const authorInput = document.getElementById("author");
-const pagesInput = document.getElementById("pages");
+
 const completedInput = document.getElementById("completed");
 const radioCompleted = document.getElementById("completed");
 const radioInProgress = document.getElementById("InProgress");
@@ -91,6 +89,10 @@ displayBook(); //displayBook used to check current display functionality
 
 //add submit button listener to collect a new books attributes and create an object from them
 submitBtn.addEventListener("click", ()=>{
+    let titleInput = document.getElementById("title");
+    let authorInput = document.getElementById("author");
+    let pagesInput = document.getElementById("pages");
+    console.log("cliccccc")
     let res = true;
     if(radioCompleted.checked === true && radioInProgress.checked === true){
         res = false;
@@ -99,12 +101,53 @@ submitBtn.addEventListener("click", ()=>{
     } else {
         res = false;
     }
-    let newBook = new Book(titleInput.value, authorInput.value,
-    pagesInput.value, res)
-    library.push(newBook);
-    bookModal.style.display = "none"; //hide the modal form again
-    console.log(radioCompleted.checked +" "+ radioInProgress.checked + " " + res)
-    displayBook() //call display book to add the book to the page
+    let titleFlag = false;
+    let authorFlag = false;
+    let pagesFlag = false;
+    
+    if(!titleInput.validity.tooShort || !authorInput.validity.tooShort || !pagesInput.validity.tooShort){
+        if(!titleInput.validity.tooShort){
+            titleFlag = true;
+            titleInput.style.borderColor = "red";
+            titleInput.style.borderWidth = "2px";
+        } else {
+            titleFlag = false;
+            titleInput.style.borderColor = "white";
+            titleInput.style.borderWidth = "1px";
+        }
+        if(!authorInput.validity.tooShort){
+            authorFlag = true;
+            authorInput.style.borderColor = "red";
+            authorInput.style.borderWidth = "2px";
+
+        } else {
+            authorFlag = false;
+            authorInput.style.borderStyle = "none";
+            authorInput.style.borderWidth = "0px";
+        }
+        if(!pagesInput.validity.tooShort){
+            pagesFlag = true;
+            pagesInput.style.borderColor = "red";
+            pagesInput.style.borderWidth = "2px";
+        } else {
+            pagesFlag = false;
+            pagesInput.style.borderStyle = "none";
+            pagesInput.style.borderWidth = "0px";
+        }  
+    } 
+    console.log(titleInput.validity.tooShort);
+    console.log(authorInput.validity.tooShort);
+    console.log(pagesInput.validity.tooShort);
+    console.log(titleFlag)
+    if(titleFlag === false && authorFlag === false && pagesFlag === false){
+        let newBook = new Book(titleInput.value, authorInput.value,
+        pagesInput.value, res)
+        library.push(newBook);
+        bookModal.style.display = "none"; //hide the modal form again
+        console.log(radioCompleted.checked +" "+ radioInProgress.checked + " " + res)
+        displayBook() //call display book to add the book to the page
+    }
+    
 })
  //cancel button hides the modal
 cancelBtn.addEventListener("click",()=>{
@@ -119,7 +162,9 @@ cancelBtn.addEventListener("click",()=>{
 newBook.addEventListener("click", getBook);
  //getBook() resets all field values 
 function getBook(){
-
+    let titleInput = document.getElementById("title");
+    let authorInput = document.getElementById("author");
+    let pagesInput = document.getElementById("pages");
     bookModal.style.display = "flex";
     titleInput.value = "";
     authorInput.value = "";
