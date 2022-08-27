@@ -63,7 +63,8 @@ function displayBook() {
             const statusBtn = document.createElement("button")
             statusBtn.classList.add("statusBtn");
             statusBtn.innerHTML = "Toggle Status"
-            createDiv.appendChild(statusBtn);
+            createDiv.appendChild(statusBtn)
+            
         })
         document.getElementById("librarybody").appendChild(createDiv);
         createDiv.appendChild(statusBtn);
