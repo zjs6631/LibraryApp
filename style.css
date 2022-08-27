@@ -67,10 +67,17 @@ body{
     border-radius: 15px;
     justify-self: center;
     align-self: center;
+    line-height: 25px;
 
 }
 
-.book img{
+.book button{
+    background-color: #573b27;
+    color: #fdfd96;
+    width: 50%;
+    justify-self: center;
+    border-style: none;
+    border-radius: 15px;
 
 }
 
