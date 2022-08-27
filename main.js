@@ -69,10 +69,6 @@ function displayBook() {
                 console.log("missing the point")
                 library[i].completed = false;
             }
-            const statusBtn = document.createElement("button")
-            statusBtn.classList.add("statusBtn");
-            statusBtn.innerHTML = "Toggle Status"
-            createDiv.appendChild(statusBtn);
         })
         //append the div as a child to the library body
         document.getElementById("librarybody").appendChild(createDiv);
